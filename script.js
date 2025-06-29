@@ -1,24 +1,22 @@
-// Константы для Телеграм-бота
 const BOT_TOKEN = '8133373573:AAEXj8mS0CNSiFc1v4qMcH8lYdvwUNR1eVA';
-const CHAT_ID = '@javascriptprocets'; // Например, @bistro24_orders
+const CHAT_ID = '@javascriptprocets';
 
-// Форма заказа
 const form = document.querySelector('.order-form');
 const successMsg = form.querySelector('.success-msg');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const name = form.querySelector('input[type="text"]').value.trim();
-  const phone = form.querySelector('input[type="tel"]').value.trim();
+  const name = form.name.value.trim();
+  const phone = form.phone.value.trim();
   const phonePattern = /^\+?\d{9,15}$/;
 
   if (name === '' || !phonePattern.test(phone)) {
-    alert('Пожалуйста, введите корректное имя и номер телефона.');
+    alert('Iltimos, ismingiz va to‘g‘ri telefon raqamini kiriting.');
     return;
   }
 
-  const message = `🍔 Новый заказ в Bistro 24!\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
+  const message = `🍔 Yangi buyurtma!\n👤 Ism: ${name}\n📞 Telefon: ${phone}`;
 
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: 'POST',
@@ -26,7 +24,7 @@ form.addEventListener('submit', function(e) {
     body: JSON.stringify({
       chat_id: CHAT_ID,
       text: message,
-      parse_mode: 'Markdown'
+      parse_mode: 'HTML'
     })
   })
   .then(res => res.json())
@@ -35,21 +33,19 @@ form.addEventListener('submit', function(e) {
       successMsg.style.display = 'block';
       form.reset();
     } else {
-      alert('Ошибка при отправке: ' + data.description);
+      alert('Xabar yuborishda xato: ' + data.description);
     }
   })
-  .catch(err => {
-    alert('Сетевая ошибка: ' + err);
-  });
+  .catch(err => alert('Tarmoq xatosi: ' + err));
 });
 
-// Слайдер изображений
+// Slayder
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
+function showSlide(i) {
+  slides.forEach((slide, idx) => {
+    slide.classList.toggle('active', idx === i);
   });
 }
 
@@ -65,9 +61,5 @@ function prevSlide() {
 
 document.querySelector('.next').addEventListener('click', nextSlide);
 document.querySelector('.prev').addEventListener('click', prevSlide);
-
-// Автоматическая смена слайдов
 setInterval(nextSlide, 5000);
-
-// Показать первый слайд сразу
 showSlide(currentSlide);
