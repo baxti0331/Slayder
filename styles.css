@@ -1,88 +1,328 @@
-body {
-  font-family: 'Arial', sans-serif;
+:root {
+  --blue: #4db6ac;
+  --green: #388e3c;
+  --light-gray: #e0f2f1;
+  --dark-blue: #004d40;
+  --white: #fff;
+  --banner-gradient: linear-gradient(90deg, #4db6ac 50%, #388e3c 100%);
+  --font-title: 'Montserrat', Arial, sans-serif;
+  --font-main: 'Roboto', Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  background: #000; /* Темный фон */
-  color: #fff;
+  font-family: var(--font-main);
+  background: var(--light-gray);
+  scroll-behavior: smooth;
+}
+
+.taxi-bg {
+  min-height: 100vh;
+  background: linear-gradient(137deg, var(--blue) 70%, var(--dark-blue) 100%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  justify-content: flex-start;
+  padding-bottom: 40px;
 }
 
 .slider-container {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 26px;
   position: relative;
-  width: 80%;
-  max-width: 900px;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 .slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
 }
 
 .slide {
-  min-width: 100%;
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 1s;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.slide-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 18px 18px 18px 24px;
+  background: rgba(0,77,64,0.7);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: 1.25em;
+  border-radius: 0 0 22px 22px;
+  text-align: left;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.slider-btn {
+  background: rgba(56,142,60,0.7);
+  color: var(--white);
+  border: none;
+  font-size: 2em;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s, color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.slider-btn:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.banner {
+  width: 100%;
+  max-width: 700px;
+  margin: 18px auto 0 auto;
+  background: var(--banner-gradient);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: 1.18em;
+  text-align: center;
+  padding: 16px 0 13px 0;
+  border-radius: 14px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.11);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.banner-promo {
+  color: #a5d6a7;
+  background: #004d40;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-family: var(--font-title);
+  margin-left: 3px;
+}
+
+header {
+  margin: 24px 0 14px 0;
   text-align: center;
 }
 
-.overlay {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+header h1 {
+  color: var(--dark-blue);
+  font-family: var(--font-title);
+  font-size: 2.2em;
+  text-shadow: 1px 1px 3px #81c784;
+  letter-spacing: 2px;
+  margin: 0 0 7px 0;
+}
+
+.subtitle {
+  margin: 0 0 4px 0;
+  color: #33691e99;
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 1.04em;
+  letter-spacing: 0.5px;
+}
+
+.order-form-section {
+  background: var(--white);
+  border-radius: 19px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 36px 30px 26px 30px;
+  min-width: 340px;
+  max-width: 95vw;
+  margin-bottom: 44px;
+  margin-top: 6px;
+}
+
+.order-form label {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--dark-blue);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.12em;
+  letter-spacing: 0.5px;
+}
+
+.order-form input[type="text"],
+.order-form input[type="tel"] {
+  width: 97%;
+  padding: 11px 13px;
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+  font-size: 1.06em;
+  font-family: var(--font-main);
+  margin-top: 5px;
+  transition: border 0.2s;
+  background: #f0f9f8;
+  box-shadow: 0 1px 2px #4db6ac22;
+}
+
+.order-form input:focus {
+  border: 2px solid var(--green);
+  outline: none;
+}
+
+.order-form button {
   width: 100%;
-  height: 100%;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin: 0 0 10px 0;
-  letter-spacing: 1.5px;
-}
-
-p {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  padding: 14px;
+  background: linear-gradient(90deg, var(--blue) 85%, var(--green) 100%);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.15em;
   border: none;
-  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 20px;
-  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+  margin-top: 18px;
+  transition: background 0.25s, color 0.25s;
+  letter-spacing: 1px;
 }
 
-button:hover {
-  background: rgba(255, 255, 255, 0.7);
-  color: #000;
+.order-form button:hover {
+  background: linear-gradient(90deg, #80cbc4 60%, #2e7d32 100%);
+  color: #fff;
 }
 
-.prev {
-  left: 10px;
+.success-msg {
+  color: #2e7d32;
+  margin-top: 22px;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  font-family: var(--font-title);
 }
 
-.next {
-  right: 10px;
+/* Секции после формы */
+
+.about-section,
+.benefits-section {
+  max-width: 700px;
+  margin: 0 auto 44px auto;
+  background: var(--white);
+  border-radius: 19px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 26px 28px 26px 28px;
+  font-family: var(--font-main);
+  color: var(--dark-blue);
+}
+
+.about-section h2,
+.benefits-section h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.9em;
+  margin-bottom: 14px;
+  letter-spacing: 0.8px;
+}
+
+.about-section p,
+.benefits-section ul {
+  font-size: 1.1em;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+}
+
+.benefits-section ul {
+  padding-left: 22px;
+  list-style-type: none;
+}
+
+.benefits-section ul li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 28px;
+}
+
+.benefits-section ul li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+/* Футер */
+footer {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  padding: 18px 0;
+  font-family: var(--font-main);
+  color: var(--dark-blue);
+  text-align: center;
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+}
+
+/* Кнопка звонка */
+.call-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 1.7em;
+  padding: 16px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(56,142,60,0.7);
+  transition: background 0.25s ease;
+  z-index: 9999;
+}
+
+.call-button:hover {
+  background: #2e7d32;
+  color: #e0f2f1;
+}
+
+/* Анимация для слайдов */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+  .slider-container {
+    max-width: 95vw;
+  }
+  .order-form-section,
+  .about-section,
+  .benefits-section,
+  footer {
+    max-width: 95vw;
+  }
 }
