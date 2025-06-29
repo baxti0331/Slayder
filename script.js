@@ -1,33 +1,28 @@
-// Ваши значения для Telegram бота
-const BOT_TOKEN = '7622026084:AAFUy3d8unjjJlNRT9ZFtUq_b_SO4lZT7mY';
-const CHAT_ID = '@javascriptprocets'; // username канала с @
+// Константы для Телеграм-бота
+const BOT_TOKEN = '8133373573:AAEXj8mS0CNSiFc1v4qMcH8lYdvwUNR1eVA;
+const CHAT_ID = '@javascriptprocets'; // Например, @bistro24_orders
 
-// Получаем элементы формы и сообщение об успехе
-const form = document.getElementById('orderForm');
-const successMsg = document.getElementById('successMsg');
+// Форма заказа
+const form = document.querySelector('.order-form');
+const successMsg = form.querySelector('.success-msg');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const phone = form.phone.value.trim();
-  const from = form.from.value.trim();
-  const to = form.to.value.trim();
-  const promo = form.promo.value.trim();
-  const phonePattern = /^\+?\d{10,15}$/;
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const phone = form.querySelector('input[type="tel"]').value.trim();
+  const phonePattern = /^\+?\d{9,15}$/;
 
-  if (!phonePattern.test(phone)) {
-    alert('Iltimos, to‘g‘ri telefon raqamini kiriting (masalan: +998123456789)');
-    form.phone.focus();
+  if (name === '' || !phonePattern.test(phone)) {
+    alert('Пожалуйста, введите корректное имя и номер телефона.');
     return;
   }
 
-  const message = `🚕 Yangi taksi buyurtmasi!\n\n📞 Telefon: ${phone}\n📍 Qayerdan: ${from}\n📍 Qayerga: ${to}\n🎟 Promokod: ${promo || "Yo'q"}`;
+  const message = `🍔 Новый заказ в Bistro 24!\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
 
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       chat_id: CHAT_ID,
       text: message,
@@ -37,24 +32,20 @@ form.addEventListener('submit', function(e) {
   .then(res => res.json())
   .then(data => {
     if (data.ok) {
-      form.style.display = 'none';
       successMsg.style.display = 'block';
+      form.reset();
     } else {
-      alert('Xabar yuborishda xatolik: ' + data.description);
+      alert('Ошибка при отправке: ' + data.description);
     }
   })
   .catch(err => {
-    alert('Tarmoq xatosi: ' + err);
+    alert('Сетевая ошибка: ' + err);
   });
 });
 
-// Слайдер
-
+// Слайдер изображений
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
-const totalSlides = slides.length;
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
@@ -63,19 +54,19 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
+  currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }
 
 function prevSlide() {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   showSlide(currentSlide);
 }
 
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
+document.querySelector('.next').addEventListener('click', nextSlide);
+document.querySelector('.prev').addEventListener('click', prevSlide);
 
-// Автоматический слайдер: смена слайдов каждые 5 секунд
+// Автоматическая смена слайдов
 setInterval(nextSlide, 5000);
 
 // Показать первый слайд сразу
