@@ -1,5 +1,5 @@
 // Константы для Телеграм-бота
-const BOT_TOKEN = '8133373573:AAEXj8mS0CNSiFc1v4qMcH8lYdvwUNR1eVA;
+const BOT_TOKEN = '8133373573:AAEXj8mS0CNSiFc1v4qMcH8lYdvwUNR1eVA';
 const CHAT_ID = '@javascriptprocets'; // Например, @bistro24_orders
 
 // Форма заказа
