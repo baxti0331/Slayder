@@ -1,36 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
+  <title>Tezkor Taxi — Onlayn buyurtma</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PUBG Mobile Slider</title>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="slider-container">
-    <div class="slider">
-      <div class="slide active" style="background-image: url('https://cdn.pixabay.com/photo/2020/08/01/06/47/playerunknowns-battlegrounds-5453865_1280.jpg');">
-        <div class="overlay">
-          <h1>Welcome to the Battlefield</h1>
-          <p>Survive till the end and claim victory!</p>
+  <div class="taxi-bg">
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <div class="slide active">
+          <img src="https://images.unsplash.com/photo-1606131732779-6e5bbfb5b19b?auto=format&fit=crop&w=800&q=80" alt="Operator">
+          <div class="slide-caption">Buyurtmangizni operatorimiz tezda qabul qiladi!</div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=800&q=80" alt="Tez yetkazib berish">
+          <div class="slide-caption">Tez yetib borish — xavfsiz va qulay!</div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1587613992213-7138ff8f4f4b?auto=format&fit=crop&w=800&q=80" alt="24/7 xizmat">
+          <div class="slide-caption">24/7 xizmat — har doim yoningizdamiz!</div>
         </div>
       </div>
-      <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2020/05/02/07/43/pubg-5126616_1280.jpg');">
-        <div class="overlay">
-          <h1>Arm Yourself</h1>
-          <p>Choose your weapons wisely and dominate the arena.</p>
-        </div>
-      </div>
-      <div class="slide" style="background-image: url('https://cdn.pixabay.com/photo/2020/08/01/06/46/pubg-5453859_1280.jpg');">
-        <div class="overlay">
-          <h1>Squad Up</h1>
-          <p>Fight alongside your team for ultimate glory.</p>
-        </div>
+      <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn">&#10094;</button>
+        <button class="slider-btn" id="nextBtn">&#10095;</button>
       </div>
     </div>
-    <button class="prev" id="prevBtn">&#10094;</button>
-    <button class="next" id="nextBtn">&#10095;</button>
+
+    <div class="banner">
+      📞 <b>Yangi mijozlarga 20% chegirma!</b>&nbsp; Promokod: <span class="banner-promo">Tezkor20</span>
+    </div>
+
+    <header>
+      <h1>TEZKOR TAXI!</h1>
+      <p class="subtitle">Tez. Arzon. Ishonchli.</p>
+    </header>
+
+    <section class="order-form-section">
+      <form class="order-form" id="orderForm">
+        <label>
+          Telefon raqami:
+          <input type="tel" name="phone" pattern="\+?\d{10,15}" required placeholder="+998" autocomplete="off">
+        </label>
+        <label>
+          Qayerdan:
+          <input type="text" name="from" required autocomplete="off">
+        </label>
+        <label>
+          Qayerga:
+          <input type="text" name="to" required autocomplete="off">
+        </label>
+        <label>
+          Promokod:
+          <input type="text" name="promo" placeholder="Agar mavjud bo‘lsa" autocomplete="off">
+        </label>
+        <button type="submit">Taxi chaqirish</button>
+      </form>
+      <div id="successMsg" class="success-msg" style="display:none;">
+        Buyurtmangiz qabul qilindi! 🚖 Yo‘lda ketyapmiz.
+      </div>
+    </section>
   </div>
+
+  <section class="about-section">
+    <h2>Nima uchun Tezkor Taxi?</h2>
+    <p>Biz tezkor, xavfsiz va qulay xizmatni taqdim etamiz. Haydovchilarimiz malakali va doim siz uchun tayyor!</p>
+  </section>
+
+  <section class="benefits-section">
+    <h2>Afzalliklarimiz:</h2>
+    <ul>
+      <li>🚗 5 daqiqada yetib boramiz</li>
+      <li>💰 Arzon narxlar va chegirmalar</li>
+      <li>🔒 Xavfsizlik kafolati</li>
+      <li>🕐 24/7 xizmat</li>
+    </ul>
+  </section>
+
+  <section class="reviews-section">
+    <h2>Mijozlar fikrlari:</h2>
+    <div class="review">
+      <p>"Operator tez javob berdi va mashina tez keldi!"</p>
+      <span>— Dilshod</span>
+    </div>
+    <div class="review">
+      <p>"Qulay xizmat va xushmuomala haydovchilar."</p>
+      <span>— Malika</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Tezkor Taxi. Barcha huquqlar himoyalangan.</p>
+  </footer>
+
+  <a href="tel:+998901234567" class="call-button">📲 Buyurtma berish</a>
 
   <script src="script.js"></script>
 </body>
