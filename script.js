@@ -1,4 +1,4 @@
-const BOT_TOKEN = '8133373573:AAEXj8mS0CNSiFc1v4qMcH8lYdvwUNR1eVA';
+const BOT_TOKEN = '7563958637:AAFWLdH8ok1EVc4SF8OJTEcv6UCV2aZMqIA';
 const CHAT_ID = '@javascriptprocets';
 
 const form = document.querySelector('.order-form');
