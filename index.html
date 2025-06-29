@@ -1,116 +1,126 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tezkor Taxi — Onlayn buyurtma</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bistro 24 — Хот-доги, Бургеры и Лаваши</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- подключаем обновлённый CSS -->
 </head>
 <body>
-  <div class="taxi-bg">
-    <div class="slider-container">
-      <div class="slider" id="slider">
-        <div class="slide active">
-          <img
-            src="https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&w=800"
-            alt="Qiz ishlayotgan call-markazda"
-          />
-          <div class="slide-caption">Xizmat ko‘rsatish markazimiz — har doim siz uchun tayyor!</div>
-        </div>
-        <div class="slide">
-          <img
-            src="https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&w=800"
-            alt="Call markaz operatori"
-          />
-          <div class="slide-caption">Telefon orqali buyurtma qabul qilamiz — tez va qulay!</div>
-        </div>
-        <div class="slide">
-          <img
-            src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&w=800"
-            alt="Operator xizmat ko‘rsatmoqda"
-          />
-          <div class="slide-caption">
-            Professional operatorlar har bir buyurtmani diqqat bilan qabul qiladi.
-          </div>
-        </div>
+
+<div class="taxi-bg">
+
+  <header>
+    <img src="logo.png" alt="Логотип Bistro 24" class="taxi-logo">
+    <h1>Bistro 24</h1>
+    <p class="subtitle">Самые вкусные хот-доги, бургеры и лаваши в городе</p>
+  </header>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide active">
+        <img src="hotdog.jpg" alt="Хот-дог">
+        <div class="slide-caption">Сочные Хот-доги от 15 000 сум</div>
       </div>
-      <div class="slider-controls">
-        <button class="slider-btn" id="prevBtn">&#10094;</button>
-        <button class="slider-btn" id="nextBtn">&#10095;</button>
+      <div class="slide">
+        <img src="burger.jpg" alt="Бургер">
+        <div class="slide-caption">Бургеры с двойной котлетой</div>
+      </div>
+      <div class="slide">
+        <img src="lavash.jpg" alt="Лаваш">
+        <div class="slide-caption">Свежие Лаваши каждый день</div>
       </div>
     </div>
-
-    <div class="banner">
-      🚖 <b>Yangi mijozlarga 20% chegirma!</b>&nbsp; Promokod:
-      <span class="banner-promo">Tezkor20</span>
+    <div class="slider-controls">
+      <button class="slider-btn prev">&#10094;</button>
+      <button class="slider-btn next">&#10095;</button>
     </div>
-
-    <header>
-      <h1>TEZKOR TAXI!</h1>
-      <p class="subtitle">Tez. Arzon. Zamonaviy.</p>
-    </header>
-
-    <section class="order-form-section">
-      <form class="order-form" id="orderForm">
-        <label>
-          Telefon raqami:
-          <input
-            type="tel"
-            name="phone"
-            pattern="\+?\d{10,15}"
-            required
-            placeholder="+998"
-            autocomplete="off"
-          />
-        </label>
-        <label>
-          Qayerdan:
-          <input type="text" name="from" required autocomplete="off" />
-        </label>
-        <label>
-          Qayerga:
-          <input type="text" name="to" required autocomplete="off" />
-        </label>
-        <label>
-          Promokod:
-          <input type="text" name="promo" placeholder="Agar mavjud bo‘lsa" autocomplete="off" />
-        </label>
-        <button type="submit">Taxi chaqirish</button>
-      </form>
-      <div id="successMsg" class="success-msg" style="display:none;">
-        Buyurtmangiz qabul qilindi! 🚕 Yo‘lda ketyapmiz.
-      </div>
-    </section>
   </div>
 
-  <section class="about-section">
-    <h2>Nima uchun Tezkor Taxi?</h2>
-    <p>
-      Biz tezkor, xavfsiz va qulay xizmatni taqdim etamiz. Haydovchilarimiz
-      malakali va doim siz uchun tayyor!
-    </p>
+  <div class="banner">
+    Закажи доставку прямо сейчас и получи <span class="banner-promo">скидку 10%</span>!
+  </div>
+
+  <section class="order-form-section">
+    <form class="order-form">
+      <label>
+        Ваше имя
+        <input type="text" placeholder="Введите имя" required>
+      </label>
+      <label>
+        Телефон
+        <input type="tel" placeholder="+998 __ ___ __ __" required>
+      </label>
+      <button type="submit">Оформить заказ</button>
+      <div class="success-msg" style="display: none;">Спасибо за заказ! Мы свяжемся с вами.</div>
+    </form>
   </section>
 
-  <section class="benefits-section">
-    <h2>Afzalliklarimiz:</h2>
-    <ul>
-      <li>🚗 5 daqiqada yetib boramiz</li>
-      <li>💰 Arzon narxlar va chegirmalar</li>
-      <li>🔒 Xavfsizlik kafolati</li>
-      <li>🕐 24/7 xizmat</li>
-    </ul>
-  </section>
+</div>
 
-  <footer>
-    <p>© 2025 Tezkor Taxi. Barcha huquqlar himoyalangan.</p>
-  </footer>
+<section class="about-section">
+  <h2>О Bistro 24</h2>
+  <p>Мы готовим лучшие хот-доги, бургеры и лаваши из свежих ингредиентов. Быстро, вкусно и с доставкой по всему городу!</p>
+</section>
 
-  <a href="tel:+998901234567" class="call-button">📞 Qo'ng'iroq qilish</a>
+<section class="benefits-section">
+  <h2>Почему выбирают нас</h2>
+  <ul>
+    <li>Свежие продукты каждый день</li>
+    <li>Быстрая доставка за 30 минут</li>
+    <li>Большие порции и доступные цены</li>
+    <li>Разнообразное меню на любой вкус</li>
+  </ul>
+</section>
 
-  <script src="script.js"></script>
+<section class="reviews-section">
+  <h2>Отзывы клиентов</h2>
+  <div class="review">
+    "Очень вкусные лаваши, заказываю каждую неделю!"
+    <span>— Алиса</span>
+  </div>
+  <div class="review">
+    "Бургеры просто 🔥, доставка быстрая, рекомендую!"
+    <span>— Тимур</span>
+  </div>
+  <div class="review">
+    "Люблю ваши хот-доги, всегда свежие и сочные."
+    <span>— София</span>
+  </div>
+</section>
+
+<footer>
+  &copy; 2024 Bistro 24 — Все права защищены
+</footer>
+
+<a href="tel:+998901234567" class="call-button">Позвонить</a>
+
+<script>
+  // Простой слайдер
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  
+  document.querySelector('.next').addEventListener('click', () => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  });
+  
+  document.querySelector('.prev').addEventListener('click', () => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+  });
+
+  // Форма заказа
+  const form = document.querySelector('.order-form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.querySelector('.success-msg').style.display = 'block';
+    form.reset();
+  });
+</script>
+
 </body>
 </html>
